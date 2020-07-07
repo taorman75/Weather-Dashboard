@@ -1,21 +1,43 @@
 // `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${APIKey}&units=imperial` -- link to open weather API/
 
-var apiKey = "436bc66d9934aa2b0814e3e5a007aaf5";
-"api.openweathermap.org/data/2.5/weather?q=" + "&appid=" + apiKey;
 
-$("#date").text()
+$("#search-button").on("click", function(event) {
+
+    event.preventDefault();
+
+    // Here we grab the text from the input box
+    var city = $("#city-input").val();
+
+    // Here we construct our URL
+    var apiKey = "1e371b6b2c7be9361517f7c932a1a6c8";
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
 
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response){
+    console.log(response);
+  
+  });
 
-function get1day() {
-    $.ajax ({
-        url: 'http://api.openweathermap.org/data/2.5/weather?q=denver&appid=436bc66d9934aa2b0814e3e5a007aaf5',
-        method: "GET"
-    }).then(function(response){
-        console.log(response);
+    
+  });
+// $("search-button").on("click", function() {
+//     $.ajax ({
+//         url: getURL,
+//         method: "GET"
+//     }).then(function(response){
+//         console.log(response);
         
-    }
-    ) 
-}
+//     }
+//     ) 
+//  console.log(city);
+// console.log(getURL);   
+// })
 
-$("#search-button").on("click", get1day)
+// function get1day() {
+    
+// }
+
+// $("#search-button").on("click", get1day)
