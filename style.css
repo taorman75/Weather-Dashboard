@@ -1,0 +1,19 @@
+/* Weather Dashboard CSS */
+
+#navbar {
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 0px;
+}
+
+.form-control {
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-left: 20px;
+    width: 75%;
+}
+
+#search-button {
+   margin-top: 10px; 
+}
