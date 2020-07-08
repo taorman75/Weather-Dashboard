@@ -1,5 +1,5 @@
 // `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${APIKey}&units=imperial` -- link to open weather API/
-$("#date").text(moment().format("MM / DD / YY"));
+// $("#date").text(moment().format("MM / DD / YY"));
 
 $(".input-group-text").on("click", getOneDay) 
 
@@ -33,22 +33,19 @@ $(".input-group-text").on("click", getOneDay)
   }).then(function(response){
     console.log(response);
     $("#current-city").text(city);
-    var icon = $("img").text(response.weather.icon);
+    var date = $("<h3>").text(moment().format("MM / DD / YY"));
+    $(".jumbotron").append(date);
+    var icon = $("<img>").text(response.weather.icon);
     $("#current-city").append(response.weather.icon);
-    var temp = $("<p>").text(response.main.temp);
-    $(".jumbotron").append("Current temperature: ", temp, "°F");
-    console.log(temp);
-    var humid = $("<p>").text(response.main.humidity);
-    $(".jumbotron").append("Humidity: ", humid, "%");
-    console.log(humid);
-    var windSpd = $("<p>").text(response.wind.speed);
-    $(".jumbotron").append("Wind Speed: ", windSpd);
-    console.log(windSpd);
+    var temp = $("<p>").text("Current temperature: " + response.main.temp + "°F");
+    $(".jumbotron").append(temp);
+    var humid = $("<p>").text("Humidity: " + response.main.humidity + "%");
+    $(".jumbotron").append(humid);
+    var windSpd = $("<p>").text("Wind Speed: " + response.wind.speed);
+    $(".jumbotron").append(windSpd);
       
     var lat = response.coord.lat;
-    console.log(lat);
     var long = response.coord.lon;
-    console.log(long);
     
     var uvQuery = `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${long}`;
     console.log(uvQuery);
@@ -67,29 +64,29 @@ $(".input-group-text").on("click", getOneDay)
       method: "GET"
     }).then(function(forecast){
       console.log(forecast);
-      var fTemp1 = $("<p>").text(forecast.list[5].main.temp);
-      var fHumid1 = $("<p>").text(forecast.list[5].main.humidity);
+      var fTemp1 = $("<p>").text("High: " + forecast.list[5].main.temp + "°F");
+      var fHumid1 = $("<p>").text("Humidity: " + forecast.list[5].main.humidity + "%");
       $("#1").append(fTemp1);
       $("#1").append(fHumid1);
 
-      var fTemp2 = $("<p>").text(forecast.list[13].main.temp);
+      var fTemp2 = $("<p>").text("High: " + forecast.list[13].main.temp + "°F");
       console.log(fTemp2);
-      var fHumid2 = $("<p>").text(forecast.list[13].main.humidity);
+      var fHumid2 = $("<p>").text("Humidity: " + forecast.list[13].main.humidity + "%");
       $("#2").append(fTemp2);
       $("#2").append(fHumid2);
 
-      var fTemp3 = $("<p>").text(forecast.list[21].main.temp);
-      var fHumid3 = $("<p>").text(forecast.list[21].main.humidity);
+      var fTemp3 = $("<p>").text("High: " + forecast.list[21].main.temp + "°F");
+      var fHumid3 = $("<p>").text("Humidity: " + forecast.list[21].main.humidity + "%");
       $("#3").append(fTemp3);
       $("#3").append(fHumid3);
 
-      var fTemp4 = $("<p>").text(forecast.list[29].main.temp);
-      var fHumid4 = $("<p>").text(forecast.list[29].main.humidity);
+      var fTemp4 = $("<p>").text("High: " + forecast.list[29].main.temp + "°F");
+      var fHumid4 = $("<p>").text("Humidity: " + forecast.list[29].main.humidity + "%");
       $("#4").append(fTemp4);
       $("#4").append(fHumid4);
 
-      var fTemp5 = $("<p>").text(forecast.list[37].main.temp);
-      var fHumid5 = $("<p>").text(forecast.list[37].main.humidity);
+      var fTemp5 = $("<p>").text("High: " + forecast.list[37].main.temp + "°F");
+      var fHumid5 = $("<p>").text("Humidity: " + forecast.list[37].main.humidity + "%");
       $("#5").append(fTemp5);
       $("#5").append(fHumid5);
     }
