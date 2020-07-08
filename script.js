@@ -23,9 +23,23 @@ $(".input-group-text").on("click", getOneDay)
     method: "GET"
   }).then(function(response){
     console.log(response);
-    var currDisplay = $
-
-    $("<p>")
+    var temp = $("<p>").text(response.main.temp);
+    console.log(temp);
+    var humid = $("<p>").text(response.main.humidity);
+    console.log(humid);
+    var windSpd = $("<p>").text(response.wind[0]);
+    console.log(windSpd);
+      
+    var lat = response.coord[1];
+    console.log(lat);
+    var long = response.coord[0];
+    console.log(long);
+    
+    var uvQuery = `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${long}`;
+    console.log(uvQuery);
+    
+   // var uvIndex = $("<p>").text()  see https://openweathermap.org/api/uvi
+    
   
   });
    
