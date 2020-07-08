@@ -5,13 +5,22 @@ $(".input-group-text").on("click", getOneDay)
 
     // event.preventDefault();
 
-    
+  // $(".btn-block").on("click", function(){     <<<< Unclear
+  //   var city = $("btn.block").val();
+  //   getOneDay();
+  // })  
     
   
 
   function getOneDay (params) {
    // Here we grab the text from the input box
+    // $(".jumbotron").text("");  <<< to hide previous city information
+    // $(".card").text("");
     var city = $("#city-input").val();
+    var searched = $("<button>").text(city);
+    searched.addClass(".btn-block");
+    $(".col-md-3").append(searched);
+    
 
     // Here we construct our URL
     var apiKey = "1e371b6b2c7be9361517f7c932a1a6c8";
