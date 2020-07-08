@@ -23,16 +23,20 @@ $(".input-group-text").on("click", getOneDay)
     method: "GET"
   }).then(function(response){
     console.log(response);
+    $("#current-city").text(city);
     var temp = $("<p>").text(response.main.temp);
+    $(".jumbotron").append("Current temperature: ", temp, "°F");
     console.log(temp);
     var humid = $("<p>").text(response.main.humidity);
+    $(".jumbotron").append("Humidity: ", humid, "%");
     console.log(humid);
-    var windSpd = $("<p>").text(response.wind[0]);
+    var windSpd = $("<p>").text(response.wind.speed);
+    $(".jumbotron").append("Wind Speed: ", windSpd);
     console.log(windSpd);
       
-    var lat = response.coord[1];
+    var lat = response.coord.lat;
     console.log(lat);
-    var long = response.coord[0];
+    var long = response.coord.lon;
     console.log(long);
     
     var uvQuery = `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${long}`;
