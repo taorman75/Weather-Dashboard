@@ -63,7 +63,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     var lat = response.coord.lat;
     var long = response.coord.lon;
     
-    var uvQuery = `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${long}`;
+    var uvQuery = `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${long}`;
     console.log(uvQuery);
     $.ajax({
       url: uvQuery,
