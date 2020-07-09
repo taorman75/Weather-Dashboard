@@ -12,10 +12,10 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
            
    
   }) 
-   var test = document.querySelector("body > container > div > div.col-md-3 > div.input-group-text");
-   test.on("click", function(){
-     console.log("Try again");
-   })
+  //  var test = document.querySelector("body > container > div > div.col-md-3 > div.input-group-text");
+  //  test.on("click", function(){
+  //    console.log("Try again");
+  //  })
     
   
 
@@ -28,8 +28,10 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     var city = $("#city-input").val();
     var searched = $("<div>").text(city);
     searched.addClass("input-group-text", "list-group-item");
+    searched.attr("id", `${$(this).val()}`);
     // searched.attr("id", "history");
     searched.val(city);
+    // localStorage.setItem(searched);
     $(".col-md-3").append(searched);
    /* $('#historyS').click(function () {
       alert('1')
@@ -51,7 +53,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     $(".jumbotron").append(date);
     var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");  // https://openweathermap.org/img/w/04n.png
     $("#current-city").append(icon);
-    var temp = $("<p>").text("Current temperature: " + response.main.temp + "°F");
+    var temp = $("<p>").text("Current temperature: " + (response.main.temp).toFixed(1) + "°F");
     $(".jumbotron").append(temp);
     var humid = $("<p>").text("Humidity: " + response.main.humidity + "%");
     $(".jumbotron").append(humid);
@@ -82,7 +84,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
       $("#1").empty();
       console.log(forecast);
       var date1 = $("<p>").text(moment(forecast.list[5].dt_txt).format("MM/DD/YY"));
-      var fTemp1 = $("<p>").text("High: " + forecast.list[5].main.temp + "°F");
+      var fTemp1 = $("<p>").text("High: " + (forecast.list[5].main.temp).toFixed(1) + "°F");
       var fHumid1 = $("<p>").text("Humidity: " + forecast.list[5].main.humidity + "%");
       var icon1 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[5].weather[0].icon + ".png");
       $("#1").append(date1);
@@ -92,7 +94,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
 
       $("#2").empty();
       var date2 = $("<p>").text(moment(forecast.list[13].dt_txt).format("MM/DD/YY"));
-      var fTemp2 = $("<p>").text("High: " + forecast.list[13].main.temp + "°F");
+      var fTemp2 = $("<p>").text("High: " + (forecast.list[13].main.temp).toFixed(1) + "°F");
       var fHumid2 = $("<p>").text("Humidity: " + forecast.list[13].main.humidity + "%");
       var icon2 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[13].weather[0].icon + ".png");
       $("#2").append(date2);
@@ -102,7 +104,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
 
       $("#3").empty();
       var date3 = $("<p>").text(moment(forecast.list[21].dt_txt).format("MM/DD/YY"));
-      var fTemp3 = $("<p>").text("High: " + forecast.list[21].main.temp + "°F");
+      var fTemp3 = $("<p>").text("High: " + (forecast.list[21].main.temp).toFixed(1) + "°F");
       var fHumid3 = $("<p>").text("Humidity: " + forecast.list[21].main.humidity + "%");
       var icon3 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[21].weather[0].icon + ".png");
       $("#3").append(date3);
@@ -112,7 +114,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
 
       $("#4").empty();
       var date4 = $("<p>").text(moment(forecast.list[29].dt_txt).format("MM/DD/YY"));
-      var fTemp4 = $("<p>").text("High: " + forecast.list[29].main.temp + "°F");
+      var fTemp4 = $("<p>").text("High: " + (forecast.list[29].main.temp).toFixed(1) + "°F");
       var fHumid4 = $("<p>").text("Humidity: " + forecast.list[29].main.humidity + "%");
       var icon4 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[29].weather[0].icon + ".png");
       $("#4").append(date4);
@@ -122,7 +124,7 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
 
       $("#5").empty();
       var date5 = $("<p>").text(moment(forecast.list[37].dt_txt).format("MM/DD/YY"));
-      var fTemp5 = $("<p>").text("High: " + forecast.list[37].main.temp + "°F");
+      var fTemp5 = $("<p>").text("High: " + (forecast.list[37].main.temp).toFixed(1) + "°F");
       var fHumid5 = $("<p>").text("Humidity: " + forecast.list[37].main.humidity + "%");
       var icon5 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[37].weather[0].icon + ".png");
       $("#5").append(date5);
