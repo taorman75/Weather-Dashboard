@@ -4,8 +4,18 @@
 $(".input-group-text").on("click", getOneDay) 
 
     // event.preventDefault();
-
+$(".input-group-text").on("click", function(){    // <<<< Unclear
+    //alert('1')
+    console.log("I m here");
+    var city = $(this).val();
+    console.log(city);
+           
    
+  }) 
+   var test = document.querySelector("body > container > div > div.col-md-3 > div.input-group-text");
+   test.on("click", function(){
+     console.log("Try again");
+   })
     
   
 
@@ -128,14 +138,7 @@ $(".input-group-text").on("click", getOneDay)
   });
    
   }
-  $(".input-group-text").click(function(){    // <<<< Unclear
-    //alert('1')
-    
-    var city = $(this).val()
-    console.log(city);
-           
-   
-  }) 
+  
   // function getFiveDay (params) {
    
   // }
