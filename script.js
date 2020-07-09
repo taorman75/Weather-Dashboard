@@ -14,7 +14,7 @@ $(".input-group-text").on("click", getOneDay)
     var newH1 = $("<h1>");
     newH1.attr("id", "current-city")
     $(".jumbotron").append(newH1);
-    // $(".card").html("");
+   
     var city = $("#city-input").val();
     var searched = $("<button>").text(city);
     searched.addClass("input-group-text");
