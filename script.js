@@ -70,7 +70,22 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
       method: "GET"
     }).then(function(uvResponse) {
       console.log(uvResponse.value);
-      var uvIndex = $("<p>").text("UV Index: " + uvResponse.value);
+      var uvIndex = $("<p>").text("UV Index: " + (uvResponse.value).toFixed(0));
+        if (uvIndex <= 2) {
+          uvIndex.attr("style", "background-color: green");
+        }
+        else if ((uvIndex >=3) && (uvIndex <= 5)) {
+          uvIndex.attr("style", "background-color: yellow");
+        }
+        else if ((uvIndex >=6) && (uvIndex <= 7)) {
+          uvIndex.attr("style", "background-color: orange");
+        }
+        else if ((uvIndex >= 8) && (uvIndex <= 10)) {
+          uvIndex.attr("style", "background-color: red");
+        }
+        else {
+          uvIndex.attr("style", "background-color: purple");
+        }
      $(".jumbotron").append(uvIndex); 
     })
      var fiveDayForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
