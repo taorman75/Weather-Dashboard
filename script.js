@@ -10,7 +10,6 @@ $(".input-group-text").on("click", getOneDay)
   
 
   function getOneDay (params) {
-   // Here we grab the text from the input box
     $(".jumbotron").html("");  
     var newH1 = $("<h1>");
     newH1.attr("id", "current-city")
@@ -66,17 +65,17 @@ $(".input-group-text").on("click", getOneDay)
       method: "GET"
     }).then(function(uvResponse) {
       console.log(uvResponse.value);
-      var uvIndex = ("<p>").text("UV Index: " + uvResponse.value)
-     $(".jumbotron").append(uvIndex); 
+      var uvIndex = $("<p>").text("UV Index: " + uvResponse.value);
+     $(".jumbotron").append(uvIndex); // <<< why won't UV index show up????
     })
      var fiveDayForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
-    console.log(fiveDayForecast);  
+    // console.log(fiveDayForecast);  
 
     $.ajax({
       url: fiveDayForecast,
       method: "GET"
     }).then(function(forecast){
-      console.log(forecast);
+      $("#1").empty();
       var fTemp1 = $("<p>").text("High: " + forecast.list[5].main.temp + "°F");
       var fHumid1 = $("<p>").text("Humidity: " + forecast.list[5].main.humidity + "%");
       var icon1 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[5].weather[0].icon + ".png");
@@ -84,14 +83,15 @@ $(".input-group-text").on("click", getOneDay)
       $("#1").append(icon1);
       $("#1").append(fHumid1);
 
+      $("#2").empty();
       var fTemp2 = $("<p>").text("High: " + forecast.list[13].main.temp + "°F");
-      console.log(fTemp2);
       var fHumid2 = $("<p>").text("Humidity: " + forecast.list[13].main.humidity + "%");
       var icon2 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[13].weather[0].icon + ".png");
       $("#2").append(fTemp2);
       $("#2").append(icon2);
       $("#2").append(fHumid2);
 
+      $("#3").empty();
       var fTemp3 = $("<p>").text("High: " + forecast.list[21].main.temp + "°F");
       var fHumid3 = $("<p>").text("Humidity: " + forecast.list[21].main.humidity + "%");
       var icon3 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[21].weather[0].icon + ".png");
@@ -99,6 +99,7 @@ $(".input-group-text").on("click", getOneDay)
       $("#3").append(icon3);
       $("#3").append(fHumid3);
 
+      $("#4").empty();
       var fTemp4 = $("<p>").text("High: " + forecast.list[29].main.temp + "°F");
       var fHumid4 = $("<p>").text("Humidity: " + forecast.list[29].main.humidity + "%");
       var icon4 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[29].weather[0].icon + ".png");
@@ -106,6 +107,7 @@ $(".input-group-text").on("click", getOneDay)
       $("#4").append(icon4);
       $("#4").append(fHumid4);
 
+      $("#5").empty();
       var fTemp5 = $("<p>").text("High: " + forecast.list[37].main.temp + "°F");
       var fHumid5 = $("<p>").text("Humidity: " + forecast.list[37].main.humidity + "%");
       var icon5 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[37].weather[0].icon + ".png");
