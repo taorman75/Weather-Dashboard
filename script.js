@@ -17,9 +17,9 @@ $(".input-group-text").on("click", getOneDay)
     // $(".card").html("");
     var city = $("#city-input").val();
     var searched = $("<button>").text(city);
-    searched.addClass("btn-block");
-    searched.attr('id', 'historyS')
-    searched.val(city)
+    searched.addClass("input-group-text");
+    // searched.attr("id", "history");
+    searched.val(city);
     $(".col-md-3").append(searched);
    /* $('#historyS').click(function () {
       alert('1')
@@ -66,19 +66,22 @@ $(".input-group-text").on("click", getOneDay)
     }).then(function(uvResponse) {
       console.log(uvResponse.value);
       var uvIndex = $("<p>").text("UV Index: " + uvResponse.value);
-     $(".jumbotron").append(uvIndex); // <<< why won't UV index show up????
+     $(".jumbotron").append(uvIndex); 
     })
      var fiveDayForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
-    // console.log(fiveDayForecast);  
+    
 
     $.ajax({
       url: fiveDayForecast,
       method: "GET"
     }).then(function(forecast){
+
       $("#1").empty();
+      var date1 = $("<p>").text(moment().format("MM/DD/YY")); // <<< can't manipulate date
       var fTemp1 = $("<p>").text("High: " + forecast.list[5].main.temp + "°F");
       var fHumid1 = $("<p>").text("Humidity: " + forecast.list[5].main.humidity + "%");
       var icon1 = $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast.list[5].weather[0].icon + ".png");
+      $("#1").append(date1);
       $("#1").append(fTemp1);
       $("#1").append(icon1);
       $("#1").append(fHumid1);
