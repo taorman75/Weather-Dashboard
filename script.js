@@ -16,8 +16,8 @@ $(".input-group-text").on("click", getOneDay)
     $(".jumbotron").append(newH1);
    
     var city = $("#city-input").val();
-    var searched = $("<button>").text(city);
-    searched.addClass("input-group-text");
+    var searched = $("<div>").text(city);
+    searched.addClass("input-group-text", "list-group-item");
     // searched.attr("id", "history");
     searched.val(city);
     $(".col-md-3").append(searched);
@@ -25,14 +25,7 @@ $(".input-group-text").on("click", getOneDay)
       alert('1')
     })*/
     
-      $(".btn-block").click(function(){    // <<<< Unclear
-        //alert('1')
-        
-        var city = $(this).val()
-        console.log(city);
-               
-       // getOneDay();
-      }) 
+     
     // Here we construct our URL
     var apiKey = "1e371b6b2c7be9361517f7c932a1a6c8";
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
@@ -135,7 +128,14 @@ $(".input-group-text").on("click", getOneDay)
   });
    
   }
-
+  $(".input-group-text").click(function(){    // <<<< Unclear
+    //alert('1')
+    
+    var city = $(this).val()
+    console.log(city);
+           
+   
+  }) 
   // function getFiveDay (params) {
    
   // }
