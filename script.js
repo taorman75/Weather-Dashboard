@@ -1,7 +1,7 @@
 $(".input-group-text").on("click", getOneDay) 
 
-$(".input-group-text").on("click", function(){    // <<<< Unclear
-    //alert('1')
+$(".input-group-text").on("click", function(){    
+    
     console.log("I m here");
     var city = $(this).val();
     console.log(city);
@@ -25,16 +25,9 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     var searched = $("<div>").text(city);
     searched.addClass("input-group-text", "list-group-item");
     searched.attr("id", `${$(this).val()}`);
-    // searched.attr("id", "history");
     searched.val(city);
-    // localStorage.setItem(searched);
     $(".col-md-3").append(searched);
-   /* $('#historyS').click(function () {
-      alert('1')
-    })*/
-    
-     
-    // Here we construct our URL
+  
     var apiKey = "1e371b6b2c7be9361517f7c932a1a6c8";
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
