@@ -1,19 +1,5 @@
 $(".input-group-text").on("click", getOneDay) 
 
-$(".input-group-text").on("click", function(){    
-    
-    console.log("I m here");
-    var city = $(this).val();
-    console.log(city);
-           
-   
-  }) 
-  //  var test = document.querySelector("body > container > div > div.col-md-3 > div.input-group-text");
-  //  test.on("click", function(){
-  //    console.log("Try again");
-  //  })
-    
-  
 
   function getOneDay (params) {
     $(".jumbotron").html("");  
@@ -22,11 +8,14 @@ $(".input-group-text").on("click", function(){
     $(".jumbotron").append(newH1);
    
     var city = $("#city-input").val();
+    localStorage.setItem("city", city);
     var searched = $("<div>").text(city);
     searched.addClass("input-group-text", "list-group-item");
     searched.attr("id", `${$(this).val()}`);
     searched.val(city);
+    localStorage.getItem(city);
     $(".col-md-3").append(searched);
+    
   
     var apiKey = "1e371b6b2c7be9361517f7c932a1a6c8";
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
@@ -43,9 +32,11 @@ $(".input-group-text").on("click", function(){
     $("#current-city").append(icon);
     var temp = $("<p>").text("Current temperature: " + (response.main.temp).toFixed(1) + "°F");
     $(".jumbotron").append(temp);
+    var feel = $("<p>").text("Feels like: " + (response.main.feels_like).toFixed(1) + "°F");
+    $(".jumbotron").append(feel);
     var humid = $("<p>").text("Humidity: " + response.main.humidity + "%");
     $(".jumbotron").append(humid);
-    var windSpd = $("<p>").text("Wind Speed: " + response.wind.speed);
+    var windSpd = $("<p>").text("Wind Speed: " + (response.wind.speed).toFixed(0) + " MPH");
     $(".jumbotron").append(windSpd);
       
     var lat = response.coord.lat;
@@ -57,7 +48,6 @@ $(".input-group-text").on("click", function(){
       method: "GET"
     }).then(function(uvResponse) {
       var UV = (uvResponse.value).toFixed(0);
-      console.log(UV);
       var uvIndex = $("<p>").text("UV Index: " + UV);
 
         if ((UV == 0) || (UV == 1) || (UV == 2)) {
@@ -138,4 +128,3 @@ $(".input-group-text").on("click", function(){
     )
   }); 
   }
-
