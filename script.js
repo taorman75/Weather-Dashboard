@@ -1,9 +1,5 @@
-// `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${APIKey}&units=imperial` -- link to open weather API/
-// $("#date").text(moment().format("MM / DD / YY"));
-
 $(".input-group-text").on("click", getOneDay) 
 
-    // event.preventDefault();
 $(".input-group-text").on("click", function(){    // <<<< Unclear
     //alert('1')
     console.log("I m here");
@@ -47,7 +43,6 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     url: queryURL,
     method: "GET"
   }).then(function(response){
-    console.log(response);
     $("#current-city").text(city);
     var date = $("<h3>").text(moment().format("MM/DD/YY"));
     $(".jumbotron").append(date);
@@ -64,16 +59,14 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     var long = response.coord.lon;
     
     var uvQuery = `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${long}`;
-    console.log(uvQuery);
     $.ajax({
       url: uvQuery,
       method: "GET"
     }).then(function(uvResponse) {
-      // console.log(uvResponse.value);
       var UV = (uvResponse.value).toFixed(0);
       console.log(UV);
       var uvIndex = $("<p>").text("UV Index: " + UV);
-      // console.log(uvIndex);
+
         if ((UV == 0) || (UV == 1) || (UV == 2)) {
           uvIndex.addClass("green");
         }
@@ -100,7 +93,6 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
     }).then(function(forecast){
 
       $("#1").empty();
-      console.log(forecast);
       var date1 = $("<p>").text(moment(forecast.list[5].dt_txt).format("MM/DD/YY"));
       var fTemp1 = $("<p>").text("High: " + (forecast.list[5].main.temp).toFixed(1) + "°F");
       var fHumid1 = $("<p>").text("Humidity: " + forecast.list[5].main.humidity + "%");
@@ -151,14 +143,6 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
       $("#5").append(fHumid5);
     }
     )
-   
-    // $("#date").text(moment().format("MM / DD / YY"));
-    
-  
-  });
-   
+  }); 
   }
-  
-  // function getFiveDay (params) {
-   
-  // }
+
