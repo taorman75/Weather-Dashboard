@@ -69,22 +69,25 @@ $(".input-group-text").on("click", function(){    // <<<< Unclear
       url: uvQuery,
       method: "GET"
     }).then(function(uvResponse) {
-      console.log(uvResponse.value);
-      var uvIndex = $("<p>").text("UV Index: " + (uvResponse.value).toFixed(0));
-        if (uvIndex <= 2) {
-          uvIndex.attr("style", "background-color: green");
+      // console.log(uvResponse.value);
+      var UV = (uvResponse.value).toFixed(0);
+      console.log(UV);
+      var uvIndex = $("<p>").text("UV Index: " + UV);
+      // console.log(uvIndex);
+        if ((UV == 0) || (UV == 1) || (UV == 2)) {
+          uvIndex.addClass("green");
         }
-        else if ((uvIndex >=3) && (uvIndex <= 5)) {
-          uvIndex.attr("style", "background-color: yellow");
+        else if ((UV == 3) || (UV == 4) || (UV == 5)) {
+          uvIndex.addClass("yellow");
         }
-        else if ((uvIndex >=6) && (uvIndex <= 7)) {
-          uvIndex.attr("style", "background-color: orange");
+        else if ((UV == 6) || (UV == 7)) {
+          uvIndex.addClass("orange");
         }
-        else if ((uvIndex >= 8) && (uvIndex <= 10)) {
-          uvIndex.attr("style", "background-color: red");
+        else if ((UV == 8) || (UV == 9) || (UV == 10)) {
+          uvIndex.addClass("red");
         }
-        else {
-          uvIndex.attr("style", "background-color: purple");
+        else if (UV >= 11) {
+          uvIndex.addClass("purple");
         }
      $(".jumbotron").append(uvIndex); 
     })
